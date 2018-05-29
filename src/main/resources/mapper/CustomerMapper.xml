@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.alex.demo.dao.CustomerMapper" >
+
+  <select id="getCustomers" resultMap="BaseResultMap">
+    SELECT *
+    FROM customer
+    ORDER BY created_on DESC
+  </select>
+
+  <select id="checkExist" resultMap="BaseResultMap">
+    SELECT *
+    FROM customer
+    WHERE phone = #{phone}
+    AND password = #{password}
+  </select>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <resultMap id="BaseResultMap" type="com.alex.demo.entity.Customer" >
+    <id column="id" property="id" jdbcType="CHAR" />
+    <result column="phone" property="phone" jdbcType="BIGINT" />
+    <result column="nickname" property="nickname" jdbcType="VARCHAR" />
+    <result column="avatar" property="avatar" jdbcType="VARCHAR" />
+    <result column="gender" property="gender" jdbcType="CHAR" />
+    <result column="wechat" property="wechat" jdbcType="VARCHAR" />
+    <result column="weibo" property="weibo" jdbcType="VARCHAR" />
+    <result column="vip_level" property="vipLevel" jdbcType="TINYINT" />
+    <result column="updated_on" property="updatedOn" jdbcType="TIMESTAMP" />
+    <result column="created_on" property="createdOn" jdbcType="TIMESTAMP" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, phone, nickname, avatar, gender, wechat, weibo, vip_level, updated_on, created_on, 
+    password
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from customer
+    where id = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from customer
+    where id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.alex.demo.entity.Customer" >
+    insert into customer (id, phone, nickname, 
+      avatar, gender, wechat, 
+      weibo, vip_level, updated_on, 
+      created_on, password)
+    values (#{id,jdbcType=CHAR}, #{phone,jdbcType=BIGINT}, #{nickname,jdbcType=VARCHAR}, 
+      #{avatar,jdbcType=VARCHAR}, #{gender,jdbcType=CHAR}, #{wechat,jdbcType=VARCHAR}, 
+      #{weibo,jdbcType=VARCHAR}, #{vipLevel,jdbcType=TINYINT}, #{updatedOn,jdbcType=TIMESTAMP}, 
+      #{createdOn,jdbcType=TIMESTAMP}, #{password,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.alex.demo.entity.Customer" >
+    insert into customer
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="nickname != null" >
+        nickname,
+      </if>
+      <if test="avatar != null" >
+        avatar,
+      </if>
+      <if test="gender != null" >
+        gender,
+      </if>
+      <if test="wechat != null" >
+        wechat,
+      </if>
+      <if test="weibo != null" >
+        weibo,
+      </if>
+      <if test="vipLevel != null" >
+        vip_level,
+      </if>
+      <if test="updatedOn != null" >
+        updated_on,
+      </if>
+      <if test="createdOn != null" >
+        created_on,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=BIGINT},
+      </if>
+      <if test="nickname != null" >
+        #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="avatar != null" >
+        #{avatar,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        #{gender,jdbcType=CHAR},
+      </if>
+      <if test="wechat != null" >
+        #{wechat,jdbcType=VARCHAR},
+      </if>
+      <if test="weibo != null" >
+        #{weibo,jdbcType=VARCHAR},
+      </if>
+      <if test="vipLevel != null" >
+        #{vipLevel,jdbcType=TINYINT},
+      </if>
+      <if test="updatedOn != null" >
+        #{updatedOn,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdOn != null" >
+        #{createdOn,jdbcType=TIMESTAMP},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.alex.demo.entity.Customer" >
+    update customer
+    <set >
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=BIGINT},
+      </if>
+      <if test="nickname != null" >
+        nickname = #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="avatar != null" >
+        avatar = #{avatar,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        gender = #{gender,jdbcType=CHAR},
+      </if>
+      <if test="wechat != null" >
+        wechat = #{wechat,jdbcType=VARCHAR},
+      </if>
+      <if test="weibo != null" >
+        weibo = #{weibo,jdbcType=VARCHAR},
+      </if>
+      <if test="vipLevel != null" >
+        vip_level = #{vipLevel,jdbcType=TINYINT},
+      </if>
+      <if test="updatedOn != null" >
+        updated_on = #{updatedOn,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdOn != null" >
+        created_on = #{createdOn,jdbcType=TIMESTAMP},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.alex.demo.entity.Customer" >
+    update customer
+    set phone = #{phone,jdbcType=BIGINT},
+      nickname = #{nickname,jdbcType=VARCHAR},
+      avatar = #{avatar,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=CHAR},
+      wechat = #{wechat,jdbcType=VARCHAR},
+      weibo = #{weibo,jdbcType=VARCHAR},
+      vip_level = #{vipLevel,jdbcType=TINYINT},
+      updated_on = #{updatedOn,jdbcType=TIMESTAMP},
+      created_on = #{createdOn,jdbcType=TIMESTAMP},
+      password = #{password,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=CHAR}
+  </update>
+</mapper>

@@ -1,0 +1,40 @@
+groups:
+#获取所有信息
+#- id: 1
+#  name: user
+#  urls: /customers
+
+#APP用户管理
+- id: 2
+  name: admin
+  urls: /customers/**
+
+##商品管理
+#- id: 3
+#  name: product_management
+#  urls: /cms/*/products/**
+
+##订单管理
+#- id: 4
+#  name: order_management
+#  urls: /cms/*/orders/**
+#
+##售后管理
+#- id: 5
+#  name: after_sale_management
+#  urls: /cms/*/after-sales/**
+#
+##商城运营
+#- id: 6
+#  name: mall_operation
+#  urls: /cms/*/mall-operation/**
+#
+##数据分析
+#- id: 7
+#  name: data_analysis
+#  urls: /cms/*/data-analysis/**
+#
+##网站管理
+##- id: 8
+##  name: website_management
+##  urls: /cms/

@@ -1,0 +1,28 @@
+name:
+  lastname: li
+  firstname:
+    english: alex
+    chinese: longyi
+
+myenglishname: ${name.firstname.english}${name.lastname}
+
+
+server:
+  port: 8102
+
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/ammour
+    hikari:
+      username: root
+      password: root
+      auto-commit: true
+      transaction-isolation: TRANSACTION_READ_COMMITTED
+      connection-timeout: 60000
+      maximum-pool-size: 20
+      idle-timeout: 60000
+      max-lifetime: 1800000
+    initialization-mode: always
+
