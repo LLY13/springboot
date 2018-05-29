@@ -15,6 +15,12 @@
     AND password = #{password}
   </select>
 
+  <select id="checkPhone" resultType="int">
+    SELECT COUNT(*)
+    FROM customer
+    WHERE phone = #{phone}
+  </select>
+
 
 
 

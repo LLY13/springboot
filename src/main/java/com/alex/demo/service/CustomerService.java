@@ -60,8 +60,11 @@ public class CustomerService {
 
 
   @Transactional
-  public Customer setCustomer(Long phone, LocalDateTime time, Gender gender, String password) {
-    Customer customer = new Customer(CommonUtil.uuid(), phone, time, gender, password);
+  public Customer setCustomer(Long phone, Gender gender, String password) {
+    if (customerMapper.checkPhone(phone) > 0){
+      throw Exception.badRequest("电话已存在");
+    }
+    Customer customer = new Customer(CommonUtil.uuid(), phone, LocalDateTime.now(), gender, password);
     customerMapper.insert(customer);
     return (customer);
   }

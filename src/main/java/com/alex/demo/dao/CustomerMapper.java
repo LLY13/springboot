@@ -21,4 +21,6 @@ public interface CustomerMapper {
   List<Customer> getCustomers();
 
   Customer checkExist(@Param("phone") Long phone, @Param("password") String password);
+
+  int checkPhone(Long phone);
 }

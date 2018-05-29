@@ -51,11 +51,10 @@ public class TestController {
   @PostMapping
   public Customer create(
       @ApiParam(value = "电话", required = true) @RequestParam Long phone,
-      @ApiParam(value = "日期", required = true) @RequestParam LocalDateTime time,
       @ApiParam(value = "性别", required = true) @RequestParam Gender gender,
       @ApiParam(value = "密码", required = true) @RequestParam String password
   ) {
-    return customerService.setCustomer(phone, time, gender, password);
+    return customerService.setCustomer(phone, gender, password);
   }
 
   @ApiOperation(value = "更新信息", response = Customer.class)
