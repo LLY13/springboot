@@ -101,7 +101,7 @@ spring:
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/ammour?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    url: jdbc:mysql://localhost:3306/test?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false
     hikari:
       username: root
       password: root
@@ -469,10 +469,10 @@ public class DateTimeConfig {
 ```
 spring
   redis:
-    host: 192.168.31.111
-    port: 6399
+    host: 
+    port: 
     database: 2
-    password: Chkj@2015
+    password: 
     timeout: 60000
     jedis:
       pool:
